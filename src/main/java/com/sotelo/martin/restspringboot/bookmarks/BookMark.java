@@ -1,4 +1,4 @@
-package com.sotelo.martin.restspringboot.calendar;
+package com.sotelo.martin.restspringboot.bookmarks;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

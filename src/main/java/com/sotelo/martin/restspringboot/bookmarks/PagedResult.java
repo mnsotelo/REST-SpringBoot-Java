@@ -1,4 +1,4 @@
-package com.sotelo.martin.restspringboot.calendar;
+package com.sotelo.martin.restspringboot.bookmarks;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
