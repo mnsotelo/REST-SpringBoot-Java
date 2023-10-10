@@ -13,7 +13,7 @@ public class TestRestSpringBootApplication {
 	@Bean
 	@ServiceConnection
 	PostgreSQLContainer<?> postgresContainer() {
-		return new PostgreSQLContainer<>(DockerImageName.parse("postgres:latest"));
+		return new PostgreSQLContainer<>(DockerImageName.parse("postgres:15.4-alpine"));
 	}
 
 	public static void main(String[] args) {
