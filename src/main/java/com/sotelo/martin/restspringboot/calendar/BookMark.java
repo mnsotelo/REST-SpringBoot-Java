@@ -1,4 +1,4 @@
-package com.sotelo.martin.restspringboot.calendar.infrastructure;
+package com.sotelo.martin.restspringboot.calendar;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
