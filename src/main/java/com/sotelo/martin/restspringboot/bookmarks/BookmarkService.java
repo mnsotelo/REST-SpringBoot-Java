@@ -1,5 +1,6 @@
 package com.sotelo.martin.restspringboot.bookmarks;
 
+import java.time.Instant;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -34,5 +35,16 @@ public class BookmarkService {
             page.hasNext(),
             page.hasPrevious()
         );
+    }
+
+    @Transactional
+    public BookmarkDTO create(CreateBookmarkCommand command) {
+        Bookmark bookmark = new Bookmark();
+        bookmark.setTitle(command.title());
+        bookmark.setUrl(command.url());
+        bookmark.setCreatedAt(Instant.now());
+        return BookmarkDTO.from(bookmarkRepository.save(bookmark));
+
+
     }
 }

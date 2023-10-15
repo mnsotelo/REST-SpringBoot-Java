@@ -10,7 +10,7 @@ import java.time.Instant;
 
 @Entity
 @Table(name="bookmarks")
-class BookMark {
+class Bookmark {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ class BookMark {
     @Column(name = "updated_at", insertable = false)
     private Instant updatedAt;
 
-    public BookMark() {
+    public Bookmark() {
     }
 
     public Long getId() {
