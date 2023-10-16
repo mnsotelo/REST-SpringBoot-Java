@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 import java.time.Instant;
 
 @Entity
-@Table(name="bookmarks")
+@Table(name = "bookmarks")
 class Bookmark {
 
     @Id
@@ -19,9 +19,12 @@ class Bookmark {
     private String title;
     @Column(nullable = false)
     private String url;
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at",
+            nullable = false,
+            updatable = false)
     private Instant createdAt;
-    @Column(name = "updated_at", insertable = false)
+    @Column(name = "updated_at",
+            insertable = false)
     private Instant updatedAt;
 
     public Bookmark() {

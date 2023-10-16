@@ -25,20 +25,28 @@ public class BookmarkController {
 
     @GetMapping
     PagedResult<BookmarkDTO> findBookmarks(
-        @RequestParam(name = "page", defaultValue = "1") Integer pageNumber,
-        @RequestParam(name = "size", defaultValue = "10") Integer pageSize) {
+        @RequestParam(name = "page",
+                      defaultValue = "1")
+        Integer pageNumber,
+        @RequestParam(name = "size",
+                      defaultValue = "10")
+        Integer pageSize) {
         FindBookmarksQuery query = new FindBookmarksQuery(pageNumber, pageSize);
         return bookmarkService.findBookmarks(query);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    ResponseEntity<BookmarkDTO> create(@RequestBody @Validated CreateBookmarkRequest bookmarkRequest){
+    ResponseEntity<BookmarkDTO> create(
+        @RequestBody
+        @Validated
+        CreateBookmarkRequest bookmarkRequest) {
         CreateBookmarkCommand command = new CreateBookmarkCommand(bookmarkRequest.title(), bookmarkRequest.url());
         BookmarkDTO bookmark = bookmarkService.create(command);
-        URI location = ServletUriComponentsBuilder
-            .fromCurrentRequest()
-            .path("/api/bookmarks/{id}")
-            .buildAndExpand(bookmark.id()).toUri();
-        return ResponseEntity.created(location).body(bookmark);    }
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                                                  .path("/api/bookmarks/{id}")
+                                                  .buildAndExpand(bookmark.id())
+                                                  .toUri();
+        return ResponseEntity.created(location).body(bookmark);
+    }
 }

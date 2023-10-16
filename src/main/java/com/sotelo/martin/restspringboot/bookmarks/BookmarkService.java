@@ -17,7 +17,7 @@ public class BookmarkService {
         this.bookmarkRepository = calendarEventRepository;
     }
 
-    public PagedResult<BookmarkDTO> findBookmarks(FindBookmarksQuery query){
+    public PagedResult<BookmarkDTO> findBookmarks(FindBookmarksQuery query) {
         Sort sort = Sort.by(Sort.Direction.DESC, "createdAt");
         int pageNumber = query.pageNumber() > 0 ? query.pageNumber() - 1 : 0;
 
@@ -25,16 +25,10 @@ public class BookmarkService {
         Page<BookmarkDTO> page = bookmarkRepository.findBookMarks(pageable);
 
 
-        return new PagedResult<>(
-            page.getContent(),
-            page.getTotalElements(),
-            page.getNumber() + 1, // for user page number starts from 1
-            page.getTotalPages(),
-            page.isFirst(),
-            page.isLast(),
-            page.hasNext(),
-            page.hasPrevious()
-        );
+        return new PagedResult<>(page.getContent(), page.getTotalElements(), page.getNumber() + 1,
+                                 // for user page number starts from 1
+                                 page.getTotalPages(), page.isFirst(), page.isLast(), page.hasNext(),
+                                 page.hasPrevious());
     }
 
     @Transactional
@@ -43,6 +37,7 @@ public class BookmarkService {
         bookmark.setTitle(command.title());
         bookmark.setUrl(command.url());
         bookmark.setCreatedAt(Instant.now());
+
         return BookmarkDTO.from(bookmarkRepository.save(bookmark));
 
 
