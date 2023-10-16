@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 import java.time.Instant;
 
 @Entity
-@Table(name="bookmarks")
+@Table(name = "bookmarks")
 class Bookmark {
 
     @Id

@@ -17,7 +17,7 @@ public class BookmarkService {
         this.bookmarkRepository = calendarEventRepository;
     }
 
-    public PagedResult<BookmarkDTO> findBookmarks(FindBookmarksQuery query){
+    public PagedResult<BookmarkDTO> findBookmarks(FindBookmarksQuery query) {
         Sort sort = Sort.by(Sort.Direction.DESC, "createdAt");
         int pageNumber = query.pageNumber() > 0 ? query.pageNumber() - 1 : 0;
 

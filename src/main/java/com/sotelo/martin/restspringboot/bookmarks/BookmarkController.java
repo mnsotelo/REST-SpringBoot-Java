@@ -33,12 +33,13 @@ public class BookmarkController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    ResponseEntity<BookmarkDTO> create(@RequestBody @Validated CreateBookmarkRequest bookmarkRequest){
+    ResponseEntity<BookmarkDTO> create(@RequestBody @Validated CreateBookmarkRequest bookmarkRequest) {
         CreateBookmarkCommand command = new CreateBookmarkCommand(bookmarkRequest.title(), bookmarkRequest.url());
         BookmarkDTO bookmark = bookmarkService.create(command);
         URI location = ServletUriComponentsBuilder
             .fromCurrentRequest()
             .path("/api/bookmarks/{id}")
             .buildAndExpand(bookmark.id()).toUri();
-        return ResponseEntity.created(location).body(bookmark);    }
+        return ResponseEntity.created(location).body(bookmark);
+    }
 }

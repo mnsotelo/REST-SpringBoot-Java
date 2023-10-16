@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.matchesRegex;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.nullValue;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.BeforeEach;
@@ -59,11 +60,11 @@ public class BookmarkControllerTest {
         given().contentType(ContentType.JSON)
             .body(
                 """
-                 {
-                     "title": "SivaLabs blog",
-                     "url": "https://sivalabs.in"
-                 }
-               """)
+                      {
+                          "title": "SivaLabs blog",
+                          "url": "https://sivalabs.in"
+                      }
+                    """)
             .when()
             .post("/api/bookmarks")
             .then()
